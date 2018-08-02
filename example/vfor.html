@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for</title>
+    <script src="../resouce/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <ul>
+            <!--v-for就是for循环，循环哪个就那个元素上面-->
+            <li v-for="item in sortitems">
+                {{item}}
+            </li>
+        </ul>
+        <ul>
+           <li v-for="(student,index) in sortByKey">
+               {{index+1}}:{{student.name}}-{{student.age}}
+           </li>
+        </ul>
+    </div>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            message:'v-for',
+            items:[1,44,23,11,6,23],
+            students:[
+                {name:'gd',age:'30'},
+                {name:'top',age:'31'},
+                {name:'dacheng',age:'29'},
+                {name:'taiyang',age:'30'},
+                {name:'shengli',age:'26'}
+            ]
+        },
+        computed:{
+            sortitems:function () {
+                return this.items.sort(sortItem);
+            },
+            sortByKey:function () {
+                return sortByKey(this.students,'age');
+            }
+        }
+    });
+    //数组排序
+    function sortItem(a,b) {
+        return a-b;
+    }
+    //数组对象方法排序:
+    function sortByKey(array,key){
+        return array.sort(function(a,b){
+            var x=a[key];
+            var y=b[key];
+            return ((x<y)?-1:((x>y)?1:0));
+        });
+    }
+</script>
+</body>
+</html>
