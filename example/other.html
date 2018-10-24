@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>other</title>
+    <script src="../resouce/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-pre>{{message}}</div><!--原样输出-->
+    <div v-once>{{message}}</div><!--只在第一次渲染，后面更好值不会渲染-->
+    <div v-cloak>{{message}}</div><!--完成后渲染-->
+    <div >{{message}}</div>
+    <input type="text" v-model="message">
+</div>
+    <script>
+       var app=new Vue({
+           el:"#app",
+           data:{
+               message:'hello world'
+           }
+       })
+    </script>
+</body>
+</html>

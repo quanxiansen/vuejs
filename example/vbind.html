@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind</title>
+    <script src="../resouce/vue.js"></script>
+    <style>
+        .classA{
+            color:red;
+        }
+        .classB{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <img v-bind:src="imgsrc" alt="" width="200px">
+    <p><a :href="url">a链接href绑定</a></p>
+    <p :class="classA">设置class名称</p>
+    <p :class="{classB:isok}">通过isok设置class名称</p>
+    <p :class="isok?classA:classB">通过三元表达式设置class名称</p>
+    <p>
+        <input type="checkbox" id="check" v-model="isok">
+        <laber for="check">isok={{isok}}</laber>
+    </p>
+    <p :class="[classA,classB]">通过数组设置class名称</p>
+    <p :style="{color:color,fontSize:font}">通过style设置</p>
+    <p :style=style>对象绑定style</p>
+</div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                imgsrc:'../resouce/4.jpg',
+                url:'http://jspang.com/post/vue2-1.html',
+                classA:'classA',
+                isok:true,
+                color:'blue',
+                font:'12px',
+                style:{
+                    color:'green',
+                    fontSize:'20px'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../resouce/vue.js"></script>
+    <title>component</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+    <jspang></jspang>
+    <aaa></aaa>
+    <bbb></bbb>
+</div>
+<script type="text/javascript">
+    //组件是定义标签
+    //指令是定义标签属性
+    Vue.component('jspang',{
+        template:'<h1>我是全局变量</h1>'
+    });
+    //写components的原因是可以定义多个组件
+    //组件名称必须是加引号
+    var app=new Vue({
+        el:"#app",
+        message:'hello world',
+        components:{
+            'aaa':{
+                template:'<h1>我是局部变量1</h1>'
+            },
+            'bbb':{
+                template:'<h1>我是局部变量2</h1>'
+            }
+        }
+    })
+</script>
+</body>
+</html>

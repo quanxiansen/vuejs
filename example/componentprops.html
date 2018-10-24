@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../resouce/vue.js"></script>
+    <title>component-props</title>
+</head>
+<body>
+<div id="app">
+    <!--<panda here="China"></panda>-->
+    <panda :here="message"></panda>
+</div>
+<script type="text/javascript">
+    // props:['here']//获取组价上面的属性
+    //props:['formHere']//有杠的需要使用驼峰命名规则，类似于class样式，最好不要带杠，挖坑
+    var app=new Vue({
+        el:"#app",
+        data:{
+          message:'chengdou'
+        },
+        components:{
+            'panda':{
+                template:'<h1>熊猫来自{{here}}</h1>',
+                props:['here']
+            }
+        }
+    })
+</script>
+</body>
+</html>

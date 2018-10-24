@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../resouce/vue.js"></script>
+    <title>Vue.set全局操作</title>
+</head>
+<body>
+<h1>Vue.set 全局操作</h1>
+<hr>
+<div id="app">
+    {{count}}
+    <ul>
+        <li v-for="item in arr">{{item}}</li>
+    </ul>
+</div>
+<button onclick="add()">外部添加</button>
+<script type="text/javascript">
+    function add() {
+        //app.count++;
+        //outData.count++
+        //Vue.set(outData,'count',2);//三个参数，改变的对象，改变的属性，改变的值
+        Vue.set(app.arr,1,'ddddd')
+        //app.arr[1]='ffff';
+        //因为数组的数据的值不能随时更新，所以必须用set，触发update事件
+    }
+    var outData={
+        count:1,
+        arr:['aaa','bbb','ccc']
+    };
+   var app=new Vue({
+       el:"#app",
+       data:outData
+   })
+</script>
+</body>
+</html>

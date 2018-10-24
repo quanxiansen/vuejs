@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../resouce/vue.js"></script>
+    <title>component</title>
+</head>
+<body>
+<div id="app">
+    <jspang></jspang>
+</div>
+<script type="text/javascript">
+    var city={
+        template:'<p>sichuan from china</p>'
+    };
+    var panda={
+        template:`
+            <div>
+                <p>熊猫来自中国</p>
+                <city></city>
+        </div>
+        `,
+        components:{
+            'city':city
+        }
+    };
+    var app=new Vue({
+        el:"#app",
+        components:{
+            'jspang':panda
+        }
+    })
+</script>
+</body>
+</html>

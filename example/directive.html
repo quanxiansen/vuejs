@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>directive</title>
+    <script src="../resouce/vue.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-liu="color">{{num}}</div>
+        <button v-on:click="add">add</button>
+        <button onclick=onbind()>解绑</button>
+    </div>
+    <script>
+        function onbind() {
+            app.$destroy();//组件销毁
+        }
+        /*Vue.directive('liu',function (el,binding) {
+            console.log(el);
+            console.log(binding.name);
+            console.log(binding.value);
+            el.style='color:'+binding.value;
+            //console.log(el.value);
+        });*/
+        Vue.directive('liu',{
+            //生命周期
+            bind:function () {//被绑定
+                console.log('1-bind');
+            },
+            inserted:function(){//绑定到节点
+                console.log('2 - inserted');
+            },
+            update:function(el,binding){//组件更新
+                el.style='color:'+binding.value;
+                console.log('3 - update');
+            },
+            componentUpdated:function(){//组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind:function(){//解绑
+                console.log('5 - unbind');
+            }
+        });
+        var app=new Vue({
+            el:'#app',
+            data:{
+                num:10,
+                color:'red'
+            },
+            methods:{
+                add:function () {
+                    this.num++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
