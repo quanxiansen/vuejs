@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on绑定事件</title>
+    <script src="../resouce/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span>本场比赛的得分：{{count}}</span>
+        <button v-on:click="jiafen">加分</button>
+        <button v-on:click="jianfen">减分</button>
+        <input v-on:keyup.enter="onkey" v-model="reset">
+        <!--v-on:绑定的事件-->
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                count:0,
+                reset:1
+            },
+            methods:{
+                jiafen:function () {
+                    return this.count++;
+                },
+                jianfen:function () {
+                    return this.count--;
+                },
+                onkey:function () {
+                    this.count=this.count+parseInt(this.reset);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

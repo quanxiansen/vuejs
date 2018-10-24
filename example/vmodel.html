@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model</title>
+    <script src="../resouce/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <p>文本框</p>
+        v-model:<input type="text" v-model="message"><br>
+        v-model.lazy:<input type="text" v-model.lazy="message"><!--.lazy只有文本框失去焦点的时候实现双向数据绑定-->
+        v-model.number:<input type="text" v-model.number="message"><!--.number 文本框刚开始输入都为数字，后面再输入文字的话不实现数据绑定，一开始输的是文字的话就不再检测是否是数字了-->
+        v-model.trim:<input type="text" v-model.trim="message"> <!--.trim去除两边的空格-->
+        <!--v-model双向数据绑定-->
+        <p>文本域</p>
+        <textarea cols="30" rows="10">{{message}}</textarea>
+        <p>复选框数据绑定</p>
+        <input type="checkbox" id="istrue" v-model="isTrue">
+        <label for="istrue">{{isTrue}}</label>
+        <hr>
+        <p>复选框数据绑定</p>
+        <input type="checkbox" id="JSPang" value="JSPang" v-model="web_Names">
+        <label for="JSPang">JSPang</label><br/>
+        <input type="checkbox" id="Panda" value="Panda" v-model="web_Names">
+        <label for="JSPang">Panda</label><br/>
+        <input type="checkbox" id="PanPan" value="PanPan" v-model="web_Names">
+        <label for="JSPang">PanPan</label>
+        <p>{{web_Names}}</p>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello world',
+                isTrue:true,
+                web_Names:[]
+            }
+        })
+    </script>
+</body>
+</html>
